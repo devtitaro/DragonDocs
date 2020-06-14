@@ -1,0 +1,300 @@
+*,
+*::before,
+*::after
+{
+ padding: 0;
+ margin: 0;
+ box-sizing: border-box;
+}
+
+html
+{
+ font-size: 62.5%;
+}
+
+body
+{
+ background-color: #f5eded;
+ font-family: Arial, Helvetica, sans-serif;
+ margin: 3rem;
+ font-size: 1.5rem;
+}
+
+body a
+{
+ text-decoration: none;
+ color: #043b20;
+}
+
+body div#container
+{
+ margin: auto auto;
+}
+
+/* Header Styling */
+header
+{
+ text-align: center;
+ margin-bottom: 2rem;
+}
+
+header div.dragon-head
+{
+ padding: 3rem;
+}
+
+header div.dragon-head div.head-text
+{
+ color: rgb(78, 13, 13);
+ text-transform: uppercase;
+ font-size: 4rem;
+ font-weight: bolder;
+}
+
+header div.dragon-head div.head-sub-text
+{
+ color: rgb(134, 75, 75);
+ text-transform: uppercase;
+ font-size: 2rem;
+ font-weight: bolder;
+}
+
+header div.dragon-search input
+{
+ background-color: #f0ecec;
+ border: none;
+ border-radius: 2rem;
+ box-shadow: 0 0 1rem rgba(0, 0, 0, .3);
+ border: 1px solid #ccc;
+ padding: 1rem;
+ width: 60%;
+}
+
+nav.dragon-nav ul
+{
+ list-style: none;
+ display: inline-block;
+ text-align: center;
+}
+
+nav.dragon-nav ul li
+{
+ /* float: left; */
+ color: #043b20;
+ padding: 1.5rem;
+ text-transform: uppercase;
+ font-weight: 900;
+ font-size: small;
+ background-color: #d3e4d5;
+ padding: 1rem;
+ border-radius: .5rem;
+ margin: 1rem;
+ display: inline-block;
+ cursor: pointer;
+}
+
+/* Main Styling */
+main
+{
+ padding: 5rem;
+ margin: 2rem auto;
+ text-align: center;
+}
+
+main div#sect-text
+{
+ font-size: large;
+ border-bottom: .5rem solid rgb(78, 13, 13);
+ margin: 0 0 10rem 0;
+ width: 30%;
+ font-size: 2rem;
+ font-weight: 900;
+ padding: 1rem;
+ text-transform: uppercase;
+ text-align: center;
+ display: inline-block;
+}
+
+main ul
+{
+ list-style: none;
+ display: inline-block;
+ text-align: center;
+}
+
+main ul li
+{
+ float: left;
+ background-color: #e4d3d3;
+ border-left: 1rem solid rgb(78, 13, 13);
+ padding: 1.5rem;
+ color: rgb(78, 13, 13);
+ font-weight: 900;
+ min-width: 30%;
+ margin-bottom: 1rem;
+ font-size: 1.5rem;
+ text-transform: uppercase;
+ text-align: center;
+ border-radius: 1rem;
+}
+
+main ul li:hover, main ul li:active
+{
+ float: left;
+ background-color: rgb(78, 13, 13);
+ border-left: 1rem solid rgb(78, 13, 13);
+ padding: 1.5rem;
+ color: #ffffff;
+ font-weight: 900;
+ min-width: 30%;
+ margin-bottom: 1rem;
+ font-size: 1.5rem;
+ text-transform: uppercase;
+ text-align: center;
+ border-radius: 1rem;
+ transition: all .5s;
+}
+
+main ul li:not(:last-child)
+{
+ margin-right: 2rem;
+}
+
+/* ClearFix */
+.clear::before, .clear::after
+{
+ content: "";
+ display: table;
+}
+
+.clear::after
+{
+ clear: both;
+}
+
+.clear
+{
+ zoom: 1;
+}
+
+main section#content div
+{
+ background-color: #e4d3d3;
+ padding: 2.5rem;
+ border-radius: .8rem;
+ box-shadow: .3rem .3rem 1rem rgba(0, 0, 0, .2);
+}
+
+/* Footer Styling */
+footer
+{
+ text-align: center;
+ margin-top: 5rem;
+}
+
+footer div.dragon-foot
+{
+ background-color: #e4d3d3;
+ display: inline-block;
+ padding: 1rem;
+ border-radius: 2rem;
+ width: 20%;
+}
+
+footer div.dragon-foot:hover
+{
+ background-color: #4e0d0d;
+ color: #ffffff;
+ display: inline-block;
+ padding: 1rem;
+ border-radius: 2rem;
+ width: 25%;
+}
+
+footer div.dragon-foot div.foot-text
+{
+ text-transform: uppercase;
+ font-size: 1.5rem;
+ font-weight: bolder;
+}
+
+/* Media queries */
+@media only screen and (max-width: 720px)
+{
+ main ul li
+ {
+  width: 100%;
+ }
+
+ main ul li:hover, main ul li:active
+ {
+  width: 100%;
+ }
+
+ footer div.dragon-foot
+ {
+  width: 50%;
+ }
+
+ main div#sect-text
+ {
+  width: 100%;
+ }
+
+ nav.dragon-nav ul li
+ {
+  display: block;
+ }
+}
+
+/* Loader */
+.loading
+{
+ display: -webkit-box;
+ display: flex;
+ -webkit-box-pack: center;
+ justify-content: center;
+}
+
+.loading div
+{
+ width: 2.5rem;
+ height: 2.5rem;
+ margin: 2rem 0.3rem;
+ background: #4e0d0d;
+ border-radius: 50%;
+ -webkit-animation: 0.9s bounce infinite alternate;
+ animation: 0.9s bounce infinite alternate;
+}
+
+.loading div:nth-child(2)
+{
+ -webkit-animation-delay: 0.3s;
+ animation-delay: 0.3s;
+}
+
+.loading div:nth-child(3)
+{
+ -webkit-animation-delay: 0.6s;
+ animation-delay: 0.6s;
+}
+  
+@-webkit-keyframes bounce
+{
+ to
+ {
+  opacity: 0.3;
+  -webkit-transform: translate3d(0, -1rem, 0);
+  transform: translate3d(0, -1rem, 0);
+ }
+}
+  
+@keyframes bounce
+{
+ to
+ {
+  opacity: 0.3;
+  -webkit-transform: translate3d(0, -1rem, 0);
+  transform: translate3d(0, -1rem, 0);
+ }
+}
