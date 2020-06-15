@@ -31,6 +31,9 @@ const variableController = (() => {
         content: document.getElementById('content'),
         loader: document.getElementById('loader'),
         sectText: document.getElementById('sect-text'),
+        back: document.getElementById('back'),
+        github: document.getElementById('github-button'),
+        githubLink: document.getElementById('github-link'),
 
         // URL
         url: `https://api.github.com/repos/austinHeisleyCook/dragondocsrepo/contents`,
@@ -39,16 +42,36 @@ const variableController = (() => {
         customUrl: function(path) {
             return `https://api.github.com/repos/austinHeisleyCook/dragondocsrepo/contents/${path}`;
         }
-    }
+    };
 
     return function(name) {
         return variables[name];
-    }
+    };
 
 })();
 
+// Github icon controller
+const githubController = (getVar, url) => {
+
+    let content = getVar('content');
+
+    let github = getVar('github');
+    let githubLink = getVar('githubLink');
+
+    if(content.hasAttribute('class')) {
+
+        github.style.display = 'block';
+        githubLink.setAttribute('href', url);
+        githubLink.setAttribute('target', '_blank');
+
+    }
+
+};
+
+
 // Loader Controller
 const loaderController = (getVar, showLoader, sectionText) => {
+
     let loader = getVar('loader');
     let sectText = getVar('sectText');
 
@@ -66,24 +89,29 @@ const loaderController = (getVar, showLoader, sectionText) => {
     else {
         sectText.style.display = 'none';
     }
+
 };
 
 // Content Controller
 const contentController = (e, getVar, filePath) => {
-    console.log('File clicked.');
 
     let lis = getVar('listing');
     let content = getVar('content');
+    let section = getVar('section');
 
     // Loader
     loaderController(getVar, true, null);
 
 
+    content.className = 'active';
+    content.style.display = 'block';
+    
+    lis.removeAttribute('class');
     lis.style.display = 'none';
+    section.style.display = 'none';
 
     // New Request
     let fileUrl = getVar('customUrl')(filePath);
-    console.log(fileUrl);
 
     let newXhr = new XMLHttpRequest();
 
@@ -97,14 +125,13 @@ const contentController = (e, getVar, filePath) => {
 
             // Loader
             loaderController(getVar, false, response.name);
-
-    
-            console.log(response);
     
             let cont = document.createElement('div');
 
             cont.innerHTML = atob(response.content);
             content.appendChild(cont);
+
+            githubController(getVar, response._links.html);
         }
     };
 
@@ -117,10 +144,19 @@ const folderController = (e, getVar) => {
 
     let sec = getVar('section');
     let lis = getVar('listing');
+    let content = getVar('content');
 
+    // Loader
     loaderController(getVar, true, null);
+    
+    lis.className = 'active';
+    lis.style.display = 'block';
 
+    sec.removeAttribute('class');
     sec.style.display = 'none';
+    content.style.display = 'none';
+
+
     
     // New Request
     let reqUrl = getVar('customUrl')(e.target.textContent);
@@ -164,17 +200,27 @@ const folderController = (e, getVar) => {
                 }
             }
 
+
         }
 
     };
 
     newXhr.send();
-    console.log(e);
+
 };
 
 
 // Section Controller
 const sectionController = ((getVar) => {
+
+    let listing = getVar('listing');
+    let content = getVar('content');
+    let section = getVar('section');
+
+    section.className = 'active';
+
+    listing.style.display = 'none';
+    content.style.display = 'none';
 
     // Show loader
     loaderController(getVar, true, null);
@@ -215,11 +261,14 @@ const sectionController = ((getVar) => {
                 }
             }
         }
-        else {
-            console.log('ERROR!!!');
-        }
+    };
+
+    // This will be dealt with in v2
+    xhr.onerror = function() {
+        console.log(this.status);
     };
     
     xhr.send();
+
 })(variableController);
 

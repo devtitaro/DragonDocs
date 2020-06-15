@@ -70,6 +70,12 @@ header div.dragon-search input
  width: 60%;
 }
 
+img
+{
+ max-width: 100%;
+}
+
+
 nav.dragon-nav ul
 {
  list-style: none;
@@ -160,6 +166,20 @@ main ul li:not(:last-child)
  margin-right: 2rem;
 }
 
+main section#listing div
+{
+ min-width: 50%;
+ background-color: #e4d3d3;
+ padding: 1rem;
+ cursor: pointer;
+ display: inline-block;
+ margin: 1rem 3rem;
+ color: #4e0d0d;
+ font-size: large;
+ border-radius: .5rem;
+}
+
+
 /* ClearFix */
 .clear::before, .clear::after
 {
@@ -190,6 +210,20 @@ footer
 {
  text-align: center;
  margin-top: 5rem;
+}
+
+footer div#github-button
+{
+ width: 6rem;
+ height: 6rem;
+ background-color: #e4d3d3;
+ padding: 1rem;
+ border-radius: 50%;
+ position: fixed;
+ bottom: 2%;
+ right: 5%;
+ cursor: pointer;
+ display: none;
 }
 
 footer div.dragon-foot
